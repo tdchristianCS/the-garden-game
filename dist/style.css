@@ -1,0 +1,53 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.bg {
+  /* The image used */
+  background-image: url("https://www.all3dfree.net/uploads/5/1/9/6/51967249/green_ground_land_grass_textures_free_24.jpg");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+h1, h2 {
+  padding: 0px;
+  font-family: "Helvetica";
+  font-weight: 300px;
+  color: rgba(48,42,39, 1);
+}
+
+.flex-container {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+#title {
+  background-color: rgba(214,208,200, 1);
+}
+
+#hotbar {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: #c2a75d;
+}
+
+.plant {
+  width: 80px;
+  height: 80px;
+  cursor: grab;
+  background-color: rgba(173,161,146);
+  border: solid;
+  border-width: 2px;
+  border-color: rgba(78,75,68);
+  
+}
