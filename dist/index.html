@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Untitled</title>
+  <title>שב</title>
   <link rel="stylesheet" href="./style.css">
 
 </head>
@@ -13,13 +13,41 @@
   <h2>Click to water a plant. Not watering a plant will make it decay.</h2>
 </div>
 
+<div id="tools">
+  <img class="tool" id="wateringcan" src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Watercan.png" draggable="true" />
+
+  <img class="tool" id="shovel" src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Arch24trowel.png" draggable="true" />
+</div>
+
+<div class="flex-container" id="time-stat">
+<div id='timer'>Hour 1</div>
+<div id='days'>Hour 2</div>
+</div>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <div class="bg"></div>
 
+<div id="game-background">
+  <div id="pots">
+    <div class="pot-wrap">
+      <div class='plant-drop'></div>
+
+      <div class="pot">
+        <img class="pot-img" src="https://g.tdchristian.ca/the-garden-game/dist/assets/pot.png">
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="hotbar">
-  <img class="plant" src="https://www.freeiconspng.com/thumbs/sunflower-png/sunflower-png-12.png" draggable="true" />
+  
+</div>
+<audio id='bgMusic' src='https://g.tdchristian.ca/the-garden-game/dist/assets/hava_nagila.mp3'></audio>
 <!-- partial -->
-  <script  src="./script.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js'></script>
+<script src='https://g.sawczak.com/web-tools/js/app-tools.js'></script><script  src="./script.js"></script>
 
 </body>
 </html>
