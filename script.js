@@ -5,49 +5,49 @@ var plantedPlants = [];
 const plantOptions = {
   sunflower: [
     "Sunflower",
-    "https://g.tdchristian.ca/the-garden-game/dist/assets/GIRASOLE.png",
+    "assets/GIRASOLE.png",
     30, // start size
     110, // max size
     10 // growth rate per day
   ],
   rose: [
     "Cherry",
-    "https://g.tdchristian.ca/the-garden-game/dist/assets/CHERRY.png",
+    "assets/CHERRY.png",
     20, // start size
     80, // max size
     10 // growth rate per day
   ],
   potato: [
     "Potato",
-    "https://g.tdchristian.ca/the-garden-game/dist/assets/POTATO.png",
+    "assets/POTATO.png",
     20, // start size
     90, // max size
     5 // growth rate per day
   ],
   poppy: [
     "Walnut",
-    "https://g.tdchristian.ca/the-garden-game/dist/assets/NOCE.png",
+    "assets/NOCE.png",
     50, // start size
     70, // max size
     5 // growth rate per day
   ],
   mushroom: [
     "Mushroom_Yellow",
-    "https://g.tdchristian.ca/the-garden-game/dist/assets/MUSHROOM.png",
+    "assets/MUSHROOM.png",
     20, // start size
     70, // max size
     3 // growth rate per day
   ],
   fancy: [
     "Peapod",
-    "https://g.tdchristian.ca/the-garden-game/dist/assets/PEA.png",
+    "assets/PEA.png",
     40, // start size
     100, // max size
     20 // growth rate per day
   ],
   purpleshroom: [
     "PurpleShroom",
-    "https://g.tdchristian.ca/the-garden-game/dist/assets/PURPLESHROOM.png",
+    "assets/PURPLESHROOM.png",
     40, // start size
     100, // max size
     2 // growth rate per day
