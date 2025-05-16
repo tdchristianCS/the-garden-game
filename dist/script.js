@@ -1,3 +1,6 @@
+// https://api.jqueryui.com/draggable/
+// https://jqueryui.com/droppable/
+
 var plantedPlants = [];
 const plantOptions = {
   sunflower: [
@@ -14,6 +17,13 @@ const plantOptions = {
     80, // max size
     10 // growth rate per day
   ],
+  potato: [
+    "Potato",
+    "https://g.tdchristian.ca/the-garden-game/dist/assets/POTATO.png",
+    20, // start size
+    90, // max size
+    5 // growth rate per day
+  ],
   poppy: [
     "Walnut",
     "https://g.tdchristian.ca/the-garden-game/dist/assets/NOCE.png",
@@ -21,20 +31,37 @@ const plantOptions = {
     70, // max size
     5 // growth rate per day
   ],
+  mushroom: [
+    "Mushroom_Yellow",
+    "https://g.tdchristian.ca/the-garden-game/dist/assets/MUSHROOM.png",
+    20, // start size
+    70, // max size
+    3 // growth rate per day
+  ],
   fancy: [
     "Peapod",
-    "https://g.tdchristian.ca/the-garden-game/dist/assets/PEA%20(1).png",
+    "https://g.tdchristian.ca/the-garden-game/dist/assets/PEA.png",
     40, // start size
     100, // max size
     20 // growth rate per day
+  ],
+  purpleshroom: [
+    "PurpleShroom",
+    "https://g.tdchristian.ca/the-garden-game/dist/assets/PURPLESHROOM.png",
+    40, // start size
+    100, // max size
+    2 // growth rate per day
   ]
 };
+
+var menuHidden = false;
 
 // clone the pots several times, procedurally
 // jquery
 function duplicateElement(holder, element, iterations) {
-  for (let i = 0; i < iterations - 1; i++) {
+  for (let i = 0; i < iterations; i++) {
     let clone = element.clone();
+    clone.attr("data-pot-n", i)
     clone.appendTo(holder);
   }
 }
@@ -55,6 +82,18 @@ function createElementsFromDict(holder, dict) {
     newElement.attr("MaxSize", value[3]);
     newElement.attr("GrowthRate", value[4]);
   }
+}
+
+function destroyPlant(element) {
+  let index = plantedPlants.indexOf(element);
+  let pot = $(`.pot[data-pot-n="${element.attr("data-pot-n")}"]`)
+  
+  plantedPlants.splice(index, 1)
+  
+  element.remove();
+  
+  pot.removeClass("planted");
+  pot.removeAttr("planted");
 }
 
 //
@@ -110,11 +149,13 @@ $(".plant-drop").droppable({
       var newElement = $(
         '<img class="planted" src="' + image + '" draggable="true" />'
       );
-      
-      newElement.addClass("unwatered")
 
       let pot = $(this);
-
+      
+      newElement.addClass("unwatered");
+      newElement.removeClass("watered");
+      newElement.attr("data-pot-n", pot.attr("data-pot-n"))
+      
       pot.append(newElement);
       pot.attr("planted", true);
       
@@ -147,23 +188,13 @@ $(".plant-drop").droppable({
           let id = ui.draggable.attr("id");
           
           if (id == "wateringcan") {
-            console.log("Water this plant");
-            
             newElement.attr("watered", true);
             newElement.removeClass("unwatered");
-          }
+            newElement.addClass("watered")
+          };
           
           if (id == "shovel") {
-            console.log("Shovel this plant");
-            let index = plantedPlants.indexOf(newElement);
-            
-            plantedPlants.splice(index, 1)
-            
-            newElement.remove();
-            pot.removeClass("planted");
-            pot.removeAttr("planted");
-            
-            
+            destroyPlant(newElement)
           }
         }
       });
@@ -172,11 +203,21 @@ $(".plant-drop").droppable({
 });
 
 function countSecond() {
+  if (menuHidden == false) {
+    return
+  }
+  
   remainingTime--;
   
-  $("#timer").text("Hour " + (24 - remainingTime));
+  let hour = (24 - remainingTime);
+  
+  $("#timer").text("Hour " + (hour));
   $("#days").text("Day " + dayCounter);
-
+  
+  let degree = (hour * (360 / 12)) + 90
+  
+  document.getElementById("second-hand").style.transform = `rotate(${degree}deg)`;
+  
   if (remainingTime === 0) {
     // clearInterval(timer);
     remainingTime = dayLength;
@@ -184,18 +225,15 @@ function countSecond() {
     
     for (let i = 0; i < plantedPlants.length; i++) {
       let element = $(plantedPlants[i]);
+      console.log(element.attr("watered"))
       
       if (element.attr("watered")) {
+        console.log('growing...')
         let position = element.position();
-
-        element.removeAttr("watered") // no longer watered
-        element.addClass("unwatered")
-
+        
         let growthRate = element.attr("GrowthRate");
         let maxSize = element.attr("MaxSize");
-
-        console.log(maxSize);
-
+        
         if (element.width() < maxSize) {
           element.animate({
             width: "+="+growthRate+"px",
@@ -204,12 +242,15 @@ function countSecond() {
             left: position.left - (growthRate / 2)
           }, 500) // in millisecond
         };
+      } else {
+        console.log('this plant has decayed')
+        destroyPlant(element)
       };
+      
+      element.attr("watered", false); // no longer watered
+      element.addClass("unwatered");
+      element.removeClass("watered");
     };
-    
-    // you could define a function to happen when time runs out
-    // and call it here
-    // console.log("Time's up!");
   }
 }
 
@@ -224,15 +265,23 @@ const timer = setInterval(countSecond, 1_000);
 
 // music/initialization thing
 
-const startMusic = () => {
-  jb = new Jukebox();
-  jb.addByElement('bg', $('#bgMusic'));  
+var jb = new Jukebox();
+jb.addByElement('bg', $('#bgMusic')); 
+
+$("#play-button").click(function() { 
   jb.play('bg');
-  jb.volume(10)
-}
+ 
+  $(".main-menu").remove()
+  
+  menuHidden = true;
+})
 
-var jb;
+// slider thingy
+var slider = $(".slide-container")
+var output = $("#slide-text")
+output.text(slider.value)
 
-$(document).ready(() => {
-  startMusic();
-});
+slider.oninput = function() {
+  output.text(slider.value)
+  jb.volume(output);
+};
