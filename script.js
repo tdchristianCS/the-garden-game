@@ -29,14 +29,14 @@ const plantOptions = {
     "assets/NOCE.png",
     50, // start size
     70, // max size
-    5 // growth rate per day
+    10 // growth rate per day
   ],
   mushroom: [
     "Mushroom_Yellow",
     "assets/MUSHROOM.png",
     20, // start size
     70, // max size
-    3 // growth rate per day
+    10 // growth rate per day
   ],
   fancy: [
     "Peapod",
@@ -50,7 +50,7 @@ const plantOptions = {
     "assets/PURPLESHROOM.png",
     40, // start size
     100, // max size
-    2 // growth rate per day
+    10 // growth rate per day
   ]
 };
 
