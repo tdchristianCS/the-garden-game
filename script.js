@@ -86,7 +86,7 @@ function createElementsFromDict(holder, dict) {
 
 function destroyPlant(element) {
   let index = plantedPlants.indexOf(element);
-  let pot = $(`.pot[data-pot-n="${element.attr("data-pot-n")}"]`)
+  let pot = $(`.plant-drop[data-pot-n="${element.attr("data-pot-n")}"]`)
   
   plantedPlants.splice(index, 1)
   
@@ -137,8 +137,9 @@ $(".plant-drop").droppable({
   
   drop: function (event, ui) {
     $(this).removeClass("highlight-hover");
-    
+
     if ($(this).attr("planted")) {
+      // do nothing atm
     } else {
       let name = ui.draggable.attr("Name");
       let image = ui.draggable.attr("Image");
@@ -225,10 +226,8 @@ function countSecond() {
     
     for (let i = 0; i < plantedPlants.length; i++) {
       let element = $(plantedPlants[i]);
-      console.log(element.attr("watered"))
       
       if (element.attr("watered")) {
-        console.log('growing...')
         let position = element.position();
         
         let growthRate = element.attr("GrowthRate");
@@ -243,7 +242,6 @@ function countSecond() {
           }, 500) // in millisecond
         };
       } else {
-        console.log('this plant has decayed')
         destroyPlant(element)
       };
       
