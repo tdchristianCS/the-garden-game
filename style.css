@@ -331,7 +331,11 @@ h1, h2 {
   position: sticky;
   bottom: 100px;
   width: 300px;
-  height: 40px;
+  height: 20px;
+}
+
+#volume-slider {
+  height: 50%;
 }
 
 .slide-text {
