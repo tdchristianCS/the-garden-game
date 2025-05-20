@@ -22,7 +22,7 @@ const plantOptions = {
     "assets/POTATO.png",
     20, // start size
     90, // max size
-    5 // growth rate per day
+    10 // growth rate per day
   ],
   poppy: [
     "Walnut",
@@ -36,7 +36,7 @@ const plantOptions = {
     "assets/MUSHROOM.png",
     20, // start size
     70, // max size
-    3 // growth rate per day
+    10 // growth rate per day
   ],
   fancy: [
     "Peapod",
@@ -50,7 +50,7 @@ const plantOptions = {
     "assets/PURPLESHROOM.png",
     40, // start size
     100, // max size
-    2 // growth rate per day
+    10 // growth rate per day
   ]
 };
 
@@ -268,6 +268,7 @@ jb.addByElement('bg', $('#bgMusic'));
 
 $("#play-button").click(function() { 
   jb.play('bg');
+  console.log("playing background music...")
  
   $(".main-menu").remove()
   
@@ -275,11 +276,13 @@ $("#play-button").click(function() {
 })
 
 // slider thingy
-var slider = $(".slide-container")
-var output = $("#slide-text")
-output.text(slider.value)
+// we'll use vanilla JS because i cant be bothered to learn the jQuery version
+var slider = document.getElementById("myRange")
+var output = document.getElementById("slide-text")
+output.innerHTML(slider.value)
 
 slider.oninput = function() {
-  output.text(slider.value)
+  console.log("Changing...")
+  output.innerHTML(this.value)
   jb.volume(output);
 };
