@@ -29,7 +29,7 @@ const plantOptions = {
     "assets/NOCE.png",
     50, // start size
     70, // max size
-    5 // growth rate per day
+    10 // growth rate per day
   ],
   mushroom: [
     "Mushroom_Yellow",
