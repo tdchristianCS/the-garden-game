@@ -279,10 +279,10 @@ $("#play-button").click(function() {
 // we'll use vanilla JS because i cant be bothered to learn the jQuery version
 var slider = document.getElementById("volume-slider")
 var output = document.getElementById("slide-text")
-output.innerHTML = slider.value
+output.innerHTML = "Volume: " + slider.value
 
 slider.oninput = function() {
   console.log("Changing...")
-  output.innerHTML = this.value
+  output.innerHTML = "Volume: " + this.value
   jb.volume(this.value);
 };

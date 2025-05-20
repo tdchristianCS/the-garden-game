@@ -336,14 +336,14 @@ h1, h2 {
 
 #volume-slider {
   height: 70%;
-  width: 70%;
+  width: 100%;
   top: 50%;
   position: sticky;
 }
 
-.slide-text {
+#slide-text {
   height: 100%;
-  width: 100%;
+  width: 70%;
   font-family: "Helvetica";
 }
 
@@ -354,7 +354,6 @@ h1, h2 {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  color: rgba(230, 230, 0, 1);
   outline: none;
 }
 
