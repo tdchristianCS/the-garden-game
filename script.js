@@ -97,7 +97,7 @@ function destroyPlant(element) {
 }
 
 //
-duplicateElement($("#pots"), $(".pot-wrap"), 8);
+duplicateElement($("#pots"), $(".pot-wrap"), 12);
 createElementsFromDict($("#hotbar"), plantOptions);
 
 $(".plant").draggable({
