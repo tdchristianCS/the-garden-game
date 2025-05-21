@@ -356,19 +356,3 @@ h1, h2 {
   background: rgba(0, 0, 0, 0.5);
   outline: none;
 }
-
-/* Mouse-over effects */
-.slider:hover {
-  opacity: 1; /* Fully shown on mouse-over */
-}
-
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #FFFFFF; /* Green background */
-  cursor: pointer; /* Cursor on hover */
-  border-radius: 100%;
-}
