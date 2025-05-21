@@ -1,3 +1,9 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body, html {
   height: 100%;
   margin: 0;
@@ -74,12 +80,13 @@ body, html {
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
 #game-background {
-  position: relative;
+  position: absolute;
   
   background-image: url("assets/garden%20bg.png");
 
   /* Full height */
-  height: 100%; 
+  width: 100vw;
+  height: 100vh; 
   
   /* Center and scale the image nicely */
   background-position: center;
@@ -88,14 +95,15 @@ body, html {
 }
 
 #pots {
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 30px;
-  gap: 30px;
+  gap: 5%;
   width: 90%;
+  height: 60%;
 }
 
 #clock-canvas {
@@ -121,12 +129,9 @@ body, html {
   background-color: rgba(0, 0, 0, 0.5);
   color: rgba(255, 255, 255, 1);
   position: absolute;
-  margin: 50px;
   padding: 50px;
-  height: 100%;
-  width: 100%;
-  margin-top: -50px;
-  margin-left: -50px;
+  height: 100vh;
+  width: 100vw;
   text-align: center;
 }
 
@@ -169,8 +174,8 @@ h1, h2 {
   gap: 10px;
   padding: 10px;
   background: #c2a75d;
-  position: sticky;
-  bottom: 0px;
+  position: absolute;
+  bottom: 0;
 }
 
 .plant {
@@ -240,11 +245,14 @@ h1, h2 {
 
 .pot-wrap {
   position: relative;
-  margin: 60px;
+  width: 20%;
+  top: 20%;
 }
 
 .pot, .plant-drop {
   position: absolute;
+  top: 0%;
+  left: 0%;
   width: 100px;
   height: 100px;
 }

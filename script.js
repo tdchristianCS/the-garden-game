@@ -96,7 +96,7 @@ function destroyPlant(element) {
   pot.removeAttr("planted");
 }
 
-//
+// todo: some way to destroy the original template element
 duplicateElement($("#pots"), $(".pot-wrap"), 12);
 createElementsFromDict($("#hotbar"), plantOptions);
 
